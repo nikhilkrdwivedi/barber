@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,17 +9,8 @@
 	<meta name="keywords" content="">
 	<meta name="description" content="">
 
-	<title>Snapshot HTML CSS Web Template</title>
-<!--
-Snapshot Template
-http://www.templatemo.com/tm-493-snapshot
+	<title>men_menu</title>
 
-Zoom Slider
-https://vegas.jaysalvat.com/
-
-Caption Hover Effects
-http://tympanus.net/codrops/2013/06/18/caption-hover-effects/
--->
 	<link rel="stylesheet" href="css/bootstrap.min.css">
 	<link rel="stylesheet" href="css/animate.min.css">
 	<link rel="stylesheet" href="css/font-awesome.min.css">
@@ -54,14 +46,12 @@ http://tympanus.net/codrops/2013/06/18/caption-hover-effects/
           <span class="icon icon-bar"></span>
           <span class="icon icon-bar"></span>
         </button>
-        <a href="#top" class="navbar-brand smoothScroll">Snapshot</a>
+        <a href="index.php" class="navbar-brand smoothScroll">BShop</a>
       </div>
         <div class="collapse navbar-collapse">
           <ul class="nav navbar-nav navbar-right">
-            <li><a href="#top" class="smoothScroll"><span>Home</span></a></li>
-            <li><a href="#about" class="smoothScroll"><span>About</span></a></li>
-            <li><a href="#gallery" class="smoothScroll"><span>Gallery</span></a></li>
-            <li><a href="#contact" class="smoothScroll"><span>Contact</span></a></li>
+            <li><a href="index.php" class="smoothScroll"><span>Home</span></a></li>
+            
           </ul>
        </div>
 
@@ -92,7 +82,7 @@ http://tympanus.net/codrops/2013/06/18/caption-hover-effects/
               <h1>Hair Cut</h1>
               	
               
-              <a href="#">More...</a>
+              <a href="men1.php">More...</a>
             </figcaption>
           </figure>
         </li>
@@ -107,7 +97,7 @@ http://tympanus.net/codrops/2013/06/18/caption-hover-effects/
               
                 
              
-              <a href="#">More...</a>
+              <a href="men2.php">More...</a>
             </figcaption>
           </figure>
         </li>
@@ -120,7 +110,7 @@ http://tympanus.net/codrops/2013/06/18/caption-hover-effects/
               
                
               
-              <a href="#">More...</a>
+              <a href="men3.php">More...</a>
             </figcaption>
           </figure>
         </li>
@@ -133,7 +123,7 @@ http://tympanus.net/codrops/2013/06/18/caption-hover-effects/
               <h1>Other Grooming Products</h1>
            
              
-              <a href="#">More ...</a>
+              <a href="men4.php">More ...</a>
             </figcaption>
           </figure>
         </li>
@@ -163,8 +153,7 @@ http://tympanus.net/codrops/2013/06/18/caption-hover-effects/
                     <li><a href="#" class="fa fa-google-plus wow fadeInUp" data-wow-delay="1.0s"></a></li>
                 </ul>
 
-				<p class="wow fadeInUp"  data-wow-delay="1s" >Copyright &copy; 2016 Snapshot Studio | 
-                Design: <a href="https://plus.google.com/+templatemo" title="free css templates" target="_blank">Templatemo</a></p>
+				<p class="wow fadeInUp"  data-wow-delay="1s" >Copyright &copy; 2017 | BShop</p>
                 
 			</div>
 			

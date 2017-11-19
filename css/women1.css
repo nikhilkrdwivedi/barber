@@ -1,0 +1,15 @@
+*{margin: 0px; padding: 0px;}
+.container1{ position: absolute; top: 2%; left: 10%;}
+.effect {position: relative; width: 100%;}
+.image{ opacity: 1; display: block; width: 120%; height: auto; transition: .5s ease; backface-visibility: hidden; }
+.middle { transition: .5s ease; opacity: 0; position: absolute; top: 50%; left: 55%; transform: translate(-50%, -50%); -ms-transform: translate(-50%, -50%)}
+.effect:hover .image { opacity: 0.3; }
+.effect:hover .middle { opacity: 1; }
+.text a{ background-color: #ef07a2; color: white; font-size: 16px; padding: 16px 32px; text-align: center;}
+.text a:hover{color:white;}
+div#tableContainer {display: table; width: 100%; height:100%; background-color: white;}
+div#tableRow {	display: table-row;}
+#sec1,#sec2,#sec3{ vertical-align: top;display: table-cell; background-color:white; color:black;}
+#sec1 img,#sec2 img,#sec3 img{align-items: center;}
+#sec1 figcaption,#sec2 figcaption,#sec3 figcaption{text-align: center; background-color:#ef07a2;color: white; cursor: pointer; height: 50px; line-height: 50px; width: 120%;}
+#sec1 figcaption:hover,#sec2 figcaption:hover,#sec3 figcaption:hover{opacity: 0.5}

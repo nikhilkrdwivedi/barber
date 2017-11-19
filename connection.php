@@ -5,4 +5,11 @@ $dbServername = "shareddb1e.hosting.stackcp.net";
 		$dbName = "shbhmnagar-3233a302";
 
 		$link = mysqli_connect($dbServername,$dbUsername,$dbPassword,$dbName);
+
+		if (mysqli_connect_error()) {
+
+			die ("There was an error connect to the database");
+			
+
+		}
 ?>

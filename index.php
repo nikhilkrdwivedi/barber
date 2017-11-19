@@ -1,20 +1,6 @@
 <?php 
 
-	session_start();
-
-    $error = "";  
-
-    if (array_key_exists("logout", $_GET)) {
-        
-        unset($_SESSION);
-        setcookie("id", "", time() - 60*60);
-        $_COOKIE["id"] = "";  
-        
-    } else if ((array_key_exists("id", $_SESSION) AND $_SESSION['id']) OR (array_key_exists("id", $_COOKIE) AND $_COOKIE['id'])) {
-        
-        header("Location: loggedinpage.php");
-        
-    }
+	$error = ""; 
 
        if (array_key_exists("submit", $_POST)) {
         
@@ -97,11 +83,11 @@
 
                         if ($_POST['stayLoggedIn'] == '1') {
 
-                            setcookie("id", $id, time() + 60*60*24);
+                            setcookie("id", $id, time() + 60*60*24*365);
 
                         } 
                             
-                        header("Location: loggedinpage.php");
+                        header("Location: index.php");
 
                     }
 
@@ -129,7 +115,7 @@
 
                             } 
 
-                            header("Location: loggedinpage.php");
+                            header("Location: index.php");
                                 
                         } else {
                             
@@ -151,6 +137,7 @@
     }
 
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -178,6 +165,9 @@
   <link href='css/b.css' rel='stylesheet' type='text/css'>
   
   <style>
+  body{
+    width:101.5%;
+  }
   
     #img{
       
@@ -186,7 +176,7 @@
       
     }
     
-    #homePageContainer {
+#homePageContainer {
               
             margin-top: 150px;
           
@@ -197,69 +187,46 @@
               margin-top: 60px;
               
           }
+
+          body {
+
+            margin: 0px;
+            padding: 0px;
+
+          }
+
         
           #logInForm {
               
               display:none;
               
           }
+      .section
+      {
+        width:100%;
+      }
           
-          .toggleForms {
-              
-              font-weight: bold;
-              
-          }
     
   </style>
   
 </head>
-<body id="top" data-spy="scroll" data-offset="50" data-target=".navbar-collapse">
-
-<div class="preloader">
-     <div class="sk-spinner sk-spinner-pulse"></div>
-</div>
-
-
-
-  <div class="navbar navbar-default navbar-fixed-top" role="navigation">
-    <div class="container">
-
-      <div class="navbar-header">
-        <button class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-          <span class="icon icon-bar"></span>
-          <span class="icon icon-bar"></span>
-          <span class="icon icon-bar"></span>
-        </button>
-        <a href="#top" class="navbar-brand smoothScroll">BShop</a>
-      </div>
-        <div class="collapse navbar-collapse">
-          <ul class="nav navbar-nav navbar-right">
-            <li><a href="#top" class="smoothScroll"><span>Home</span></a></li>
-            <li><a href="#about" class="smoothScroll"><span>AboutUs</span></a></li>
-            <li><a href="#gallery" class="smoothScroll"><span>Gallery</span></a></li>
-            <li><a href="#contact" class="smoothScroll"><span>Contact</span></a></li>
-            <li><a href="#0" class="smoothscrooll" data-toggle="modal" data-target="#Modal"><span>SignIn/SignUp</span></a></li>
-          </ul>
-       </div>
-
-    </div>
-  </div>
-  
-
+<body id="top" data-spy="scroll" data-offset="50" data-target=".navbar-collapse" style="padding-right: 0px;">
 <div class="modal fade" id="Modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Sign Up</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <p class="modal-title" id="exampleModalLabel">BShop
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
+        </p>
+        
       </div>
       <div class="modal-body">
         <div id="error"><?php if ($error!="") {
             echo '<div class="alert alert-danger" role="alert">'.$error.'</div>';} ?>
         </div>
-        <form method="post" id = "signUpForm">
+        <form method="post" id = "signUpForm" action="#mon">
     
         <p>Interested? Sign up now.</p>
 
@@ -307,15 +274,17 @@
 
             <input type="hidden" name="signUp" value="1">
 
-            <input class="btn btn-success" type="submit" name="submit" value="Sign Up!">
+            <input class="btn btn-success" type="submit" name="submit" value="Sign Up!" onclick="funsign()">
+            <input class="toggleForms btn btn-success" value="Login" style="width:130px">
+            
 
         </fieldset>
 
-        <p><a class="toggleForms">Log in</a></p>
+        
 
     </form>
 
-    <form method="post" id = "logInForm">
+    <form method="post" id = "logInForm" action="#mon">
 
         <p>Log in using your username and password.</p>
 
@@ -346,10 +315,11 @@
         <fieldset class="form-group">
 
             <input class="btn btn-success" type="submit" name="submit" value="Log In!">
-
+            <input class="toggleForms btn btn-success" value="Sign Up" style="width:130px">
+            
         </fieldset>
 
-        <p><a class="toggleForms">Sign up</a></p>
+        
 
     </form>
 
@@ -360,40 +330,68 @@
       </div>
     </div>
   </div>
+<div class="preloader">
+     <div class="sk-spinner sk-spinner-pulse"></div>
+</div>
 
 
-<section id="home">
+
+  <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="container">
+
+      <div class="navbar-header">
+        <button class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse" aria-expanded="false" aria-label="Toggle navigation" >
+          <span class="icon icon-bar"></span>
+          <span class="icon icon-bar"></span>
+          <span class="icon icon-bar"></span>
+        </button>
+        <a href="index.php" class="navbar-brand smoothScroll">BShop</a>
+      </div>
+        <div class="collapse navbar-collapse">
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="#top" class="smoothScroll"><span>Home</span></a></li>
+            <li><a href="#about" class="smoothScroll"><span>About Us</span></a></li>
+            <li><a href="#gallery" class="smoothScroll"><span>Gallery</span></a></li>
+            <li><a href="#contact" class="smoothScroll"><span>Contact</span></a></li>
+            <li><a href="#" class="smoothscrooll" data-toggle="modal" data-target="#Modal"><span>Sign In/Sign Up</span></a></li>
+          </ul>
+       </div>
+
+    </div>
+  </div>
+  
+<section id="home" class="section">
   <div class="overlay"></div>
   <div class="container">
     <div class="row">
 
       <div class="col-md-offset-1 col-md-10 col-sm-12 wow fadeInUp" data-wow-delay="0.3s">
         <h1 class="wow fadeInUp" data-wow-delay="0.6s">Let's Get Your Hair Done</h1>
-        <p class="wow fadeInUp" data-wow-delay="0.9s">Join Us<a rel="nofollow" href="#"> at BShop</a>. Thank you.</p>
-        <a href="#about" class="smoothScroll btn btn-success btn-lg wow fadeInUp" data-wow-delay="1.2s">Learn more</a>
+        <p class="wow fadeInUp" data-wow-delay="0.9s">Join Us at<a rel="nofollow" href="https://www.google.co.in/maps/place/Lovely+Professional+University/@31.2536076,75.7014803,17z/data=!3m1!4b1!4m5!3m4!1s0x391a5a594d22b88d:0x4cc934c58d0992ec!8m2!3d31.253603!4d75.703669?hl=en" target=blank> BShop</a>. Thank you.</p>
+        <a href="https://www.google.co.in/maps/place/Lovely+Professional+University/@31.2536076,75.7014803,17z/data=!3m1!4b1!4m5!3m4!1s0x391a5a594d22b88d:0x4cc934c58d0992ec!8m2!3d31.253603!4d75.703669?hl=en" class="smoothScroll btn btn-success btn-lg wow fadeInUp" data-wow-delay="1.2s" target=blank>Find Us</a>
       </div>
 
     </div>
   </div>
 </section>
-
-<section id="about">
+<div >
+<section id="about" class = "section">
   <div class="container">
     <div class="row">
 
       <div class="col-md-9 col-sm-8 wow fadeInUp" data-wow-delay="0.2s">
         <div class="about-thumb">
-          <h1>BShop</h1>
+          <p style="font-size: 40px;">BShop</p>
           <p>At BShop, we’re passionate about making our clients feel good and look great. Our goal: ensure every client leaves with a hairstyle that complements their unique features and personal style.Our skilled, creative staff draws inspiration from nature, art and fashion to advance their cutting and coloring techniques. Innate curiosity and ongoing education keep enthusiasm and skills high. The results keep clients coming back for more. We’re just as passionate about running an eco- friendly salon. Environmentally conscious choices in our interior design, daily practices and use of organic products from Aveda all speak to our mission to be a sustainable and environmentally responsible business. Our salons are located in LPU, INDIA. We welcome anyone who’s ready for a comfortable and consistently awesome salon experience.</p>
         </div>
       </div>
 
       <div class="col-md-3 col-sm-4 wow fadeInUp about-img" data-wow-delay="0.6s">
-        <img src="images/about-img.jpg" class="img-responsive img-circle" alt="About">
+        <img src="images/bshoplogo.png" class="img-responsive img-circle" alt="About">
       </div>
 
       <div class="clearfix"></div>
-
+      <div id="mon">
       <div class="col-md-12 col-sm-12 wow fadeInUp" data-wow-delay="0.3s">
         <div class="section-title text-center">
           <h1>SALON</h1>
@@ -431,7 +429,7 @@
         <a href="kid.php">
         <div class="team-thumb">
           <div class="image-holder">
-            <img src="images/team-img3.jpg" id="img" class="img-responsive img-circle" alt="Kids">
+            <img src="images/Curly Updo With Pouf.jpg" id="img" class="img-responsive img-circle" alt="Kids">
           </div>
           <h2 class="heading">Kids</h2>
           <p class="description">Click Here...</p>
@@ -439,31 +437,42 @@
           </div>
         </a>	
     </div>
+     </div>
   </div>
 </section>
 
-<section id="contact">
-   <div class="container">
+<section id="gallery" class="section">
+    <div class="container">
+      <?php include("gallery.php");?>
+    </div>
+  </section>
+
+<section id="contact" class = "section" >
+   <div class="container" >
     <div class="row">
 
-       <div class="col-md-offset-1 col-md-10 col-sm-12">
+      
 
-        <div class="col-lg-offset-1 col-lg-10 section-title wow fadeInUp" data-wow-delay="0.4s">
+       <div class="col-md-offset-1 col-md-10 col-sm-12">
+        <?php include("contact.php");?>
+        <div class="col-lg-offset-1 col-lg-10 section-title wow fadeInUp" data-wow-delay="0.2s">
           <h1>Send a message</h1>
         </div>
 
-        <form action="#" method="post" class="wow fadeInUp" data-wow-delay="0.8s">
+        <form action="#" method="get" class="wow fadeInUp" data-wow-delay="0.3s">
           <div class="col-md-6 col-sm-6">
-            <input name="mname" type="text" class="form-control" id="name" placeholder="Name">
+            <input name="cname" type="text" class="form-control" id="name" placeholder="Name">
           </div>
           <div class="col-md-6 col-sm-6">
-            <input name="memail" type="email" class="form-control" id="email" placeholder="Email">
+            <input name="cemail" type="email" class="form-control" id="email" placeholder="Email">
           </div>
           <div class="col-md-12 col-sm-12">
-            <textarea name="mmessage" rows="6" class="form-control" id="message" placeholder="Message"></textarea>
+            <textarea name="cmessage" rows="6" class="form-control" id="message" placeholder="Message"></textarea>
           </div>
           <div class="col-md-offset-3 col-md-6 col-sm-offset-3 col-sm-6">
-            <input type="submit" class="form-control" value="SEND MESSAGE">
+            <input type="submit" name="send" class="form-control" value="SEND MESSAGE">
+            <br>
+            <a href="devtest.php" class="smoothScroll btn btn-success btn-lg wow fadeInUp" data-wow-delay="1.2s" target=blank>Know the Developers</a>
           </div>
         </form>
 
@@ -472,6 +481,7 @@
     </div>
   </div>
 </section>
+</div>
 
 
 <!-- Footer section -->
@@ -489,7 +499,9 @@
                     <li><a href="#" class="fa fa-linkedin wow fadeInUp" data-wow-delay="0.6s"></a></li>
                     <li><a href="#" class="fa fa-instagram wow fadeInUp" data-wow-delay="0.8s"></a></li>
                     <li><a href="#" class="fa fa-google-plus wow fadeInUp" data-wow-delay="1.0s"></a></li>
-                </ul>                
+                </ul>    
+                <p class="wow fadeInUp"  data-wow-delay="1s" >Copyright &copy; 2017 BShop  </p>
+                            
       </div>
       
     </div>
