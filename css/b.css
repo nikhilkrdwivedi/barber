@@ -11,7 +11,7 @@ $color-3: #d2d8d8; // grey
 
 $red: #d76666; // error messages
 
-// variables - fonts 
+// variables - fonts
 
 $primary-font: 'PT Sans', sans-serif;
 
@@ -67,21 +67,21 @@ $header-height-M: 80px;
 
 // layout - breakpoints
 
-$S:     600px;   
-$M:     768px;     
-$L:     1170px;     
+$S:     600px;
+$M:     768px;
+$L:     1170px;
 
 // layout - media queries
 
 @mixin MQ($canvas) {
   @if $canvas == S {
-   @media only screen and (min-width: $S) { @content; } 
+   @media only screen and (min-width: $S) { @content; }
   }
   @else if $canvas == M {
-   @media only screen and (min-width: $M) { @content; } 
+   @media only screen and (min-width: $M) { @content; }
   }
   @else if $canvas == L {
-   @media only screen and (min-width: $L) { @content; } 
+   @media only screen and (min-width: $L) { @content; }
   }
 }
 
@@ -92,7 +92,7 @@ $L:     1170px;
   float: $float-direction;
 }
 
-/* -------------------------------- 
+/* --------------------------------
 
 Primary style
 
@@ -134,9 +134,9 @@ input, textarea {
 	}
 }
 
-/* -------------------------------- 
+/* --------------------------------
 
-Main components 
+Main components
 
 -------------------------------- */
 
@@ -251,9 +251,9 @@ header[role=banner] {
 	}
 }
 
-/* -------------------------------- 
+/* --------------------------------
 
-xsigin/signup popup 
+xsigin/signup popup
 
 -------------------------------- */
 
@@ -418,9 +418,9 @@ xsigin/signup popup
 			border: 1px solid $red;
 		}
 
-		&[type=password] { 
+		&[type=password] {
 			/* space left for the HIDE button */
-			padding-right: 65px; 
+			padding-right: 65px;
 		}
 
 		&[type=submit] {
@@ -564,4 +564,4 @@ xsigin/signup popup
 	display: block;
 }
 
-
+/*Test COMMENT*/
